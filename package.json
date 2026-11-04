@@ -1,0 +1,73 @@
+{
+  "name": "cinema-desktop",
+  "productName": "Cinema",
+  "version": "1.0.0",
+  "description": "Cinema - assista e compartilhe a tela com os amigos",
+  "author": "José Guilherme Peron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "icones": "node scripts/icones.mjs",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "app.cinema.juntos",
+    "productName": "Cinema",
+    "artifactName": "Cinema-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "seletor.html",
+      "seletor-preload.js",
+      "build/icon.png",
+      "offline.html"
+    ],
+    "afterPack": "scripts/depois-empacotar.cjs",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "shortcutName": "Cinema",
+      "artifactName": "Cinema-Instalador-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Cinema-Portatil-${version}.${ext}"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "build/icon.png",
+      "category": "Video"
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.2.2",
+    "electron-builder": "^26.18.0",
+    "playwright-core": "^1.64.1",
+    "png-to-ico": "^3.0.2",
+    "resedit": "^3.1.0",
+    "sharp": "^0.35.5"
+  }
+}

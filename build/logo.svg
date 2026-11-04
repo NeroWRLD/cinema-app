@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Cinema">
+  <!-- Logo do Cinema: selo redondo com lâmpadas de letreiro, cortinas de veludo e um "play" dourado -->
+  <defs>
+    <linearGradient id="anel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5c542"/><stop offset=".5" stop-color="#e8434b"/><stop offset="1" stop-color="#8e1a24"/>
+    </linearGradient>
+    <radialGradient id="fundo" cx=".5" cy=".38" r=".7">
+      <stop offset="0" stop-color="#3a1418"/><stop offset="1" stop-color="#120708"/>
+    </radialGradient>
+    <linearGradient id="veludo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7d1f28"/><stop offset=".45" stop-color="#c23b45"/><stop offset="1" stop-color="#5a1219"/>
+    </linearGradient>
+    <linearGradient id="ouro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe08a"/><stop offset=".55" stop-color="#f5c542"/><stop offset="1" stop-color="#e08a1a"/>
+    </linearGradient>
+    <filter id="brilho" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="dentro"><circle cx="60" cy="60" r="44"/></clipPath>
+  </defs>
+  <style>
+    /* As lâmpadas piscam alternadas, como num letreiro de cinema */
+    .lampada { fill: #ffe08a; animation: piscar 1.6s ease-in-out infinite; }
+    .lampada:nth-child(even) { animation-delay: .8s; }
+    @keyframes piscar { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+    /* O play "respira" devagar */
+    .play { transform-origin: 62px 62px; animation: respirar 3.2s ease-in-out infinite; }
+    @keyframes respirar { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+    @media (prefers-reduced-motion: reduce) { .lampada, .play { animation: none; } }
+  </style>
+
+  <!-- anel externo -->
+  <circle cx="60" cy="60" r="56" fill="url(#anel)"/>
+  <circle cx="60" cy="60" r="50" fill="#1a0b0d"/>
+
+  <!-- 20 lâmpadas em volta -->
+  <g filter="url(#brilho)">
+    <circle class="lampada" cx="60" cy="7" r="2.3"/><circle class="lampada" cx="76.4" cy="9.6" r="2.3"/>
+    <circle class="lampada" cx="91.2" cy="17.1" r="2.3"/><circle class="lampada" cx="102.9" cy="28.8" r="2.3"/>
+    <circle class="lampada" cx="110.4" cy="43.6" r="2.3"/><circle class="lampada" cx="113" cy="60" r="2.3"/>
+    <circle class="lampada" cx="110.4" cy="76.4" r="2.3"/><circle class="lampada" cx="102.9" cy="91.2" r="2.3"/>
+    <circle class="lampada" cx="91.2" cy="102.9" r="2.3"/><circle class="lampada" cx="76.4" cy="110.4" r="2.3"/>
+    <circle class="lampada" cx="60" cy="113" r="2.3"/><circle class="lampada" cx="43.6" cy="110.4" r="2.3"/>
+    <circle class="lampada" cx="28.8" cy="102.9" r="2.3"/><circle class="lampada" cx="17.1" cy="91.2" r="2.3"/>
+    <circle class="lampada" cx="9.6" cy="76.4" r="2.3"/><circle class="lampada" cx="7" cy="60" r="2.3"/>
+    <circle class="lampada" cx="9.6" cy="43.6" r="2.3"/><circle class="lampada" cx="17.1" cy="28.8" r="2.3"/>
+    <circle class="lampada" cx="28.8" cy="17.1" r="2.3"/><circle class="lampada" cx="43.6" cy="9.6" r="2.3"/>
+  </g>
+
+  <!-- palco: fundo escuro + cortinas de veludo abertas -->
+  <g clip-path="url(#dentro)">
+    <circle cx="60" cy="60" r="44" fill="url(#fundo)"/>
+    <path d="M14 14 H50 C46 30 40 52 30 104 H14 Z" fill="url(#veludo)"/>
+    <path d="M106 14 H70 C74 30 80 52 90 104 H106 Z" fill="url(#veludo)"/>
+    <!-- dobras das cortinas -->
+    <path d="M24 16 C22 40 20 70 18 104 M36 16 C33 40 28 70 24 104" stroke="#5a1219" stroke-width="1.6" fill="none" opacity=".7"/>
+    <path d="M96 16 C98 40 100 70 102 104 M84 16 C87 40 92 70 96 104" stroke="#5a1219" stroke-width="1.6" fill="none" opacity=".7"/>
+    <!-- bandô (faixa de cima) com franja dourada -->
+    <path d="M14 14 H106 V24 C96 30 86 24 76 29 C68 33 52 33 44 29 C34 24 24 30 14 24 Z" fill="#8e1a24"/>
+    <path d="M14 24 C24 30 34 24 44 29 C52 33 68 33 76 29 C86 24 96 30 106 24" stroke="url(#ouro)" stroke-width="1.8" fill="none"/>
+  </g>
+
+  <!-- play dourado no centro (cantos arredondados) -->
+  <path class="play" filter="url(#brilho)" fill="url(#ouro)"
+        d="M52 47.5 C52 44.4 55.3 42.5 58 44 L77.6 56.3 C80.1 57.9 80.1 61.6 77.6 63.2 L58 75.5 C55.3 77 52 75.1 52 72 Z"/>
+</svg>

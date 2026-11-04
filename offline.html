@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Cinema</title>
+<style>
+  html,body{margin:0;height:100%;background:radial-gradient(circle at 50% 0%,#2a1115,#0f0809 70%);color:#f0e4e1;font-family:"Inter",system-ui,"Segoe UI",Roboto,sans-serif;display:flex}
+  .caixa{margin:auto;text-align:center;padding:30px;max-width:420px}
+  .grande{font-size:54px} h1{background:linear-gradient(90deg,#e0626a,#f2b84b);-webkit-background-clip:text;color:transparent}
+  p{color:#b09a97} button{border:0;border-radius:999px;padding:12px 26px;font:inherit;font-weight:600;cursor:pointer;background:linear-gradient(135deg,#f2b84b,#d88a2a);color:#2a1214}
+</style></head>
+<body><div class="caixa"><div class="grande">📡</div><h1>Sem conexão com o Cinema</h1>
+<p>Confira sua internet. Vou tentar de novo sozinho daqui a pouco.</p><button id="tentar">Tentar de novo</button></div>
+<script>
+  const volta = new URLSearchParams(location.search).get("volta") || "https://cinema-juntos.vercel.app";
+  const ir = () => { location.href = volta; };
+  document.getElementById("tentar").onclick = ir;
+  setTimeout(ir, 15000);
+</script></body></html>
