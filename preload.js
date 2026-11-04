@@ -2,7 +2,7 @@
 // No Windows o app já manda o som do PC inteiro, então o "+ Áudio" (somar som de outra aba) não faz sentido:
 // somaria o mesmo som duas vezes (eco). Escondemos ele só dentro do app, sem mexer no site.
 const { contextBridge } = require("electron");
-contextBridge.exposeInMainWorld("cinemaApp", { versao: "1.0.0", sistema: process.platform });
+contextBridge.exposeInMainWorld("cinemaApp", { versao: "1.1.0", sistema: process.platform });
 
 window.addEventListener("DOMContentLoaded", () => {
   document.documentElement.classList.add("app-pc");

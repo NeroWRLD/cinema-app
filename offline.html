@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8"><title>Cinema</title>
 <style>
-  html,body{margin:0;height:100%;background:radial-gradient(circle at 50% 0%,#2a1115,#0f0809 70%);color:#f0e4e1;font-family:"Inter",system-ui,"Segoe UI",Roboto,sans-serif;display:flex}
+  html,body{margin:0;height:100%;background:#0e0d0c;color:#f1e9dc;font-family:"Segoe UI Variable","Segoe UI",system-ui,sans-serif;display:flex;-webkit-font-smoothing:antialiased}
   .caixa{margin:auto;text-align:center;padding:30px;max-width:420px}
-  .grande{font-size:54px} h1{background:linear-gradient(90deg,#e0626a,#f2b84b);-webkit-background-clip:text;color:transparent}
-  p{color:#b09a97} button{border:0;border-radius:999px;padding:12px 26px;font:inherit;font-weight:600;cursor:pointer;background:linear-gradient(135deg,#f2b84b,#d88a2a);color:#2a1214}
+  svg{width:56px;height:56px} h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:30px;margin:18px 0 8px}
+  p{color:#a59c8f;margin:0 0 24px;line-height:1.5}
+  button{border:0;border-radius:999px;height:42px;padding:0 22px;font:inherit;font-weight:500;cursor:pointer;background:#e8a54b;color:#1a1207}
+  button:hover{background:#f0b562}
 </style></head>
-<body><div class="caixa"><div class="grande">📡</div><h1>Sem conexão com o Cinema</h1>
+<body><div class="caixa"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M43.6 20.4 A16.4 16.4 0 1 0 43.6 43.6" fill="none" stroke="#f1e9dc" stroke-width="6.2" stroke-linecap="round" opacity=".5"/><circle cx="46.2" cy="32" r="4.1" fill="#6f675d"/></svg><h1>Sem conexão</h1>
 <p>Confira sua internet. Vou tentar de novo sozinho daqui a pouco.</p><button id="tentar">Tentar de novo</button></div>
 <script>
   const volta = new URLSearchParams(location.search).get("volta") || "https://cinema-juntos.vercel.app";

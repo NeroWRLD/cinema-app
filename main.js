@@ -17,7 +17,7 @@ const ehDoCinema = (url) => { try { return SITES_PERMITIDOS.includes(new URL(url
 function criarJanela() {
   janela = new BrowserWindow({
     width: 1280, height: 800, minWidth: 420, minHeight: 500,
-    backgroundColor: "#160a0c", // vinho escuro do Cinema (sem piscar branco ao abrir)
+    backgroundColor: "#0e0d0c", // vinho escuro do Cinema (sem piscar branco ao abrir)
     title: "Cinema",
     icon: path.join(__dirname, "build", "icon.png"),
     autoHideMenuBar: true,
@@ -67,7 +67,7 @@ function abrirSeletor(pedeSom) {
 
     const seletor = new BrowserWindow({
       parent: janela, modal: true, width: 900, height: 640, minWidth: 600, minHeight: 420,
-      backgroundColor: "#160a0c", title: "Escolha o que compartilhar", autoHideMenuBar: true, show: false,
+      backgroundColor: "#0e0d0c", title: "Escolha o que compartilhar", autoHideMenuBar: true, show: false,
       icon: path.join(__dirname, "build", "icon.png"),
       webPreferences: { preload: path.join(__dirname, "seletor-preload.js"), contextIsolation: true, sandbox: true },
     });

@@ -5,42 +5,49 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
 <title>Escolha o que compartilhar</title>
 <style>
-  :root { --fundo:#0f0809; --fundo-2:#1a0e10; --borda:rgba(255,190,180,.09); --texto:#f0e4e1; --texto-2:#b09a97;
-          --cor:#c23b45; --cor-2:#e0626a; --ouro:#f2b84b; --raio:22px; }
+  /* Mesmo visual do site: preto quente, texto cor de papel e o âmbar do projetor */
+  :root { --fundo:#0e0d0c; --sup:#151311; --sup2:#1c1916; --linha:rgba(241,233,220,.085); --linha-forte:rgba(241,233,220,.16);
+          --texto:#f1e9dc; --texto-2:#a59c8f; --texto-3:#6f675d; --luz:#e8a54b; }
   * { box-sizing:border-box; }
-  html,body { margin:0; height:100%; background:radial-gradient(circle at 50% 0%, #2a1115, var(--fundo) 70%); color:var(--texto);
-              font-family:"Inter", system-ui, "Segoe UI", Roboto, sans-serif; }
+  html,body { margin:0; height:100%; background:var(--fundo); color:var(--texto); font-family:"Segoe UI Variable","Segoe UI",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
   body { display:flex; flex-direction:column; }
-  header { padding:22px 26px 8px; }
-  h1 { margin:0; font-size:22px; font-weight:700; background:linear-gradient(90deg,var(--cor-2),var(--ouro)); -webkit-background-clip:text; color:transparent; }
-  .abas { display:flex; gap:8px; padding:12px 26px; }
-  .aba { border:1px solid var(--borda); background:rgba(255,220,215,.05); color:var(--texto-2); padding:8px 18px; border-radius:999px; cursor:pointer; font:inherit; }
-  .aba.ativa { background:linear-gradient(135deg,var(--cor),#7d1f28); color:#fff; border-color:transparent; }
-  main { flex:1; overflow:auto; padding:6px 26px 16px; display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; align-content:start; }
-  .fonte { border:2px solid var(--borda); background:var(--fundo-2); border-radius:var(--raio); padding:10px; cursor:pointer; transition:.15s; text-align:left; color:inherit; font:inherit; }
-  .fonte:hover { border-color:rgba(242,184,75,.4); transform:translateY(-2px); }
-  .fonte.sel { border-color:var(--ouro); box-shadow:0 0 0 4px rgba(242,184,75,.15), 0 0 24px rgba(242,184,75,.2); }
-  .fonte img.mini { width:100%; aspect-ratio:16/9; object-fit:contain; background:#000; border-radius:14px; display:block; }
-  .nome { display:flex; align-items:center; gap:8px; margin-top:9px; font-size:13px; white-space:nowrap; overflow:hidden; }
+  header { padding:24px 26px 6px; }
+  .sobre { font:500 11px/1 ui-monospace,"Cascadia Mono",Consolas,monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--texto-3); margin:0 0 10px; }
+  h1 { margin:0; font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:28px; letter-spacing:-.01em; }
+  .abas { display:inline-flex; gap:2px; margin:16px 26px 14px; padding:3px; border:1px solid var(--linha); border-radius:999px; background:rgba(241,233,220,.045); align-self:flex-start; }
+  .aba { border:0; background:transparent; color:var(--texto-2); padding:7px 16px; border-radius:999px; cursor:pointer; font:inherit; font-size:14px; display:inline-flex; gap:7px; align-items:center; }
+  .aba:hover { color:var(--texto); }
+  .aba.ativa { background:var(--sup2); color:var(--texto); box-shadow:0 1px 0 var(--linha); }
+  .aba svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
+  main { flex:1; overflow:auto; padding:4px 26px 18px; display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; align-content:start; }
+  .fonte { border:1px solid var(--linha); background:var(--sup); border-radius:16px; padding:8px 8px 10px; cursor:pointer; transition:border-color .2s, background .2s; text-align:left; color:inherit; font:inherit; }
+  .fonte:hover { border-color:var(--linha-forte); }
+  .fonte.sel { border-color:rgba(232,165,75,.75); background:rgba(232,165,75,.07); }
+  .fonte img.mini { width:100%; aspect-ratio:16/9; object-fit:contain; background:#000; border-radius:10px; display:block; }
+  .nome { display:flex; align-items:center; gap:8px; margin:9px 4px 0; font-size:13px; white-space:nowrap; overflow:hidden; color:var(--texto-2); }
+  .fonte.sel .nome { color:var(--texto); }
   .nome span { overflow:hidden; text-overflow:ellipsis; }
   .nome img { width:16px; height:16px; flex:none; }
   .vazio { color:var(--texto-2); grid-column:1/-1; text-align:center; padding:40px; }
-  footer { display:flex; align-items:center; gap:12px; padding:14px 26px 20px; border-top:1px solid var(--borda); }
-  label.som { display:flex; align-items:center; gap:8px; color:var(--texto-2); font-size:14px; cursor:pointer; }
-  label.som input { accent-color:var(--ouro); width:17px; height:17px; }
-  .dica { color:var(--texto-2); font-size:12px; }
+  footer { display:flex; align-items:center; gap:12px; padding:14px 26px 18px; border-top:1px solid var(--linha); }
+  label.som { display:flex; align-items:center; gap:9px; color:var(--texto); font-size:14px; cursor:pointer; }
+  label.som input { accent-color:var(--luz); width:16px; height:16px; margin:0; }
+  .dica { color:var(--texto-3); font-size:12.5px; }
   .espaco { flex:1; }
-  button.btn { border:0; border-radius:999px; padding:11px 22px; font:inherit; font-weight:600; cursor:pointer; }
-  .btn-cancelar { background:rgba(255,220,215,.07); color:var(--texto); }
-  .btn-ok { background:linear-gradient(135deg,var(--ouro),#d88a2a); color:#2a1214; }
+  button.btn { border:1px solid transparent; border-radius:999px; height:38px; padding:0 18px; font:inherit; font-size:14px; font-weight:500; cursor:pointer; transition:background .2s, border-color .2s; }
+  .btn-cancelar { background:transparent; color:var(--texto); border-color:var(--linha-forte) !important; }
+  .btn-cancelar:hover { background:rgba(241,233,220,.05); }
+  .btn-ok { background:var(--luz); color:#1a1207; }
+  .btn-ok:hover { background:#f0b562; }
   .btn-ok:disabled { opacity:.4; cursor:default; }
+  :focus-visible { outline:2px solid rgba(232,165,75,.8); outline-offset:2px; }
 </style>
 </head>
 <body>
-<header><h1>Escolha o que compartilhar</h1></header>
+<header><p class="sobre">Compartilhar</p><h1>O que você quer mostrar?</h1></header>
 <div class="abas">
-  <button class="aba ativa" data-tipo="tela">🖥️ Tela inteira</button>
-  <button class="aba" data-tipo="janela">🪟 Janela</button>
+  <button class="aba ativa" data-tipo="tela"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg>Tela inteira</button>
+  <button class="aba" data-tipo="janela"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/></svg>Janela</button>
 </div>
 <main id="lista"></main>
 <footer>
