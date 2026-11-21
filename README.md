@@ -2,6 +2,10 @@
 
 Assista e compartilhe a tela com os amigos: https://cinema-juntos.vercel.app
 
+> **Precisa de um código de acesso.** Na primeira vez que abrir, o app pede o seu código pessoal
+> (`CINE-XXXXX-XXXXX`). Cada código vale em até 2 computadores. Não tem? Peça pro dono do Cinema.
+> Desde a versão 1.2.0 o Cinema só funciona pelo app (não mais pelo navegador).
+
 ## Baixar (Windows)
 Vá em **[Releases](../../releases/latest)** e baixe `Cinema-Portatil-x.x.x.exe`. Não precisa instalar: é só abrir.
 
@@ -17,6 +21,8 @@ Na mesma página de **[Releases](../../releases/latest)**:
 
 ## Como funciona
 - Abre o site do Cinema numa janela própria, então atualiza sozinho.
+- Na primeira vez, pede o código de acesso e vincula ao PC (pelo ID da máquina, embaralhado).
+- Abre convites direto no app (`cinema://`): no navegador, é só clicar em **Abrir no app**.
 - Tem um seletor de tela próprio (tela inteira ou janela).
 - No Windows manda o som do PC inteiro.
 
@@ -24,6 +30,6 @@ Na mesma página de **[Releases](../../releases/latest)**:
 ```
 npm install
 npm start                                 # abrir em modo de teste
-npx electron-builder --win portable zip   # Windows → dist/
+npx electron-builder --win portable      # Windows → dist/ (o instalador NSIS precisa do Wine)
 npx electron-builder --linux              # Linux (AppImage + .deb) → dist/
 ```
